@@ -1,0 +1,36 @@
+experiment_name: BASELINE
+
+seed: 1030
+loss_type: MSE
+epochs: 500
+clip_max_norm: 1.0
+
+model:
+  type: ResNet
+  SNRdB: 10
+  spp: 0.25
+  dim: 96
+  img_shape: [256, 256]
+  patch_shape: [2, 2]
+  window_size: 8
+  head_dims: [32,32,32,32]
+
+optimizer:
+  type: Adam
+  learning_rate: 1e-4
+  lr_milestone_epoch: []
+  lr_gamma: 0.1
+
+dataset:
+  train_dataset: ImageNet_8000
+  valid_dataset: Kodak_rep
+  train_batch_size: 8
+  valid_batch_size: 16
+  num_workers: 16
+
+logging:
+  save_dir: 'logs/'
+  save_model: True
+  save_every: 50
+  pretrain_ckpt: null
+  
